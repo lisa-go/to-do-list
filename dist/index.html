@@ -8,36 +8,37 @@
 </head>
 <body>
     <script src="main.js" defer></script>
+    <div id="sidebar">
+        <button id="openForm">Add</button>
+    </div>
 
-    <div id="formContainer">
-        <h3>Create New Task</h3>
+    <div id="taskContainer">
+        tasks
+    </div>
 
-        <div class="field">
-            <label for="title">Title: </label>
-                <input type="text" id="title" name="title" required>
-        </div>    
+<!---Form Modal--->
+    <div id="formBg">
+        <div id="formContainer">
+            <h3>Create New Task</h3>
 
-        <div class="field">
-            <label for="description">Description: </label>
-                <textarea id="description" name="description" rows="4" cols="25" required> </textarea>    
-        </div>
-
-        <div class="field">
-            <label for="dueDate">Due date: </label>
-                <input type="date" id="dueDate" name="dueDate" required>
-        </div>  
-
-        <div class="field">
-            <label for="priority">Priority: </label>
+            <input type="text" id="title" name="title" placeholder="Title" required>
+            
+            <textarea id="description" name="description" rows="4" onfocus="this.value=''" required>Description</textarea>    
+            
+            <label for="dueDate" class="dueDate">Due date: </label>
+            <input type="date" id="dueDate" name="dueDate" required>
+            
+            <label for="priority" class="priority">Priority: </label>
             <select name="priority" id="priority" required>
                 <option value="Urgent">Urgent</option>
                 <option value="High">High</option>
                 <option value="Normal" selected>Normal</option>
                 <option value="Low">Low</option>
-              </select>
-        </div>  
+            </select> 
 
-        <button type="submit" id="formBtn">Submit</button>
+            <button id="formBtn">Submit</button>
+            <button id="closeForm">Cancel</button>
+        </div>
     </div>
 
 </body>

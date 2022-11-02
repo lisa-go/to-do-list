@@ -1,5 +1,5 @@
 import "./style.scss";
-
+import displayTasks from './display.js';
 
 let myTasks = [];
 
@@ -16,6 +16,7 @@ class Task {
         }
 }
 
+
 //* event listener for submit button on form *//
 const formBtn = document.querySelector('#formBtn');
 formBtn.addEventListener("click", newTask);
@@ -30,8 +31,27 @@ function newTask() {
     var task = new Task(title, description, dueDate, priority);
 
     task.addToList();
+
+    closeForm();
+    displayTasks();
     console.log(myTasks);
 }
 
 
+//* event listener for add task button on sidebar *//
+const openFormBtn = document.querySelector('#openForm');
+openFormBtn.addEventListener("click", openForm);
 
+//* function to open form *//
+function openForm() {
+    document.querySelector('#formBg').style.display = "flex";
+}
+
+//* event listener for cancel button on form *//
+const closeFormBtn = document.querySelector('#closeForm');
+closeFormBtn.addEventListener("click", closeForm);
+
+//* function to open form *//
+function closeForm() {
+    document.querySelector('#formBg').style.display = "none";
+}
