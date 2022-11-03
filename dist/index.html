@@ -8,18 +8,36 @@
 </head>
 <body>
     <script src="main.js" defer></script>
+    <div class="header">to-do</div>
     <div id="sidebar">
-        <button id="openForm">Add</button>
+        <button id="openForm">Task</button>
+        <button id="addProject">Project</button>
+
+        <div class="projheader">Projects</div>
+        <div class="project-list"></div>
     </div>
 
     <div id="taskContainer">
-        tasks
+        <taskheader>
+            <div>Priority</div>
+            <div>Check</div>
+            <div>Task</div>
+            <div>Description</div>
+            <div>Due Date</div>
+            <div>Project</div>
+            <div>Settings</div>
+        </taskheader>
     </div>
 
-<!---Form Modal--->
+    <div class="footer">Footer</div>
+
+<!---Task Form Modal--->
     <div id="formBg">
         <div id="formContainer">
             <h3>Create New Task</h3>
+
+            <div class="projectL">Project: </div>
+            <div class="project"></div>
 
             <input type="text" id="title" name="title" placeholder="Title" required>
             
@@ -40,6 +58,18 @@
             <button id="closeForm">Cancel</button>
         </div>
     </div>
+
+<!---Project Form Modal--->
+<div id="formBg2">
+    <div id="formContainer2">
+        <h3>Create New Project</h3>
+
+        <input type="text" id="newProject" name="newProject" placeholder="New Project" required>
+
+        <button id="formBtn2">Submit</button>
+        <button id="closeForm2">Cancel</button>
+    </div>
+</div>
 
 </body>
 </html>
