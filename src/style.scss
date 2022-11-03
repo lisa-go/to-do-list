@@ -1,7 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
 $main-font: 'Ubuntu';
-$brown: #a78a8a;
+$dark1: #262322;
+$dark2: #63372C;
+$mid: #C97D60;
+$light1: #F2E5D7;
+$light2: #FFBCB5;
 
 
 body {
@@ -20,8 +24,8 @@ body {
     width: 100%;
     font-family: 'Caveat Brush';
     font-size: 3rem;
-    background-color: white;
-    color: $brown;
+    background-color: $dark1;
+    color: $light1;
     display: flex;
     flex-direction: row-reverse;
     justify-content: center;
@@ -29,31 +33,32 @@ body {
 }
 
 #sidebar {
-    grid-row: 2 / 4;
-    background-color: $brown;
+    grid-row: 2 / 3;
+    background-color: $dark1;
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 5px;
-    letter-spacing: 3px;
+    letter-spacing: 4px;
 
     button {
         font-family: $main-font;
         font-size: 1.3rem;
         cursor: pointer;
         border: none;
-        letter-spacing: 3px;
+        letter-spacing: 4px;
         background-color: inherit;
     }
 
     #openForm {
+        color: $light2;
         padding: 0.5rem 1rem;
         display: flex;
         justify-content: flex-end;
         align-items: center;
 
             &:hover {
-                background-color: rgba(255, 255, 255, 0.25);
+                background-color: rgba(255, 255, 255, 0.1);
                 font-weight: 500;
                 transition: 1s;
             }
@@ -67,8 +72,8 @@ body {
         width: 100%;
         text-align: right;
         font-size: 1.4rem;
-        background-color: white;
-        color: $brown;
+        background-color: $light2;
+        color: $dark1;
         padding: 0.3rem 0;
         margin-top: 1.5rem;
     }
@@ -83,30 +88,44 @@ body {
             text-align: right;
             width: 100%;
             background: none;
-            color: white;
+            color: $light1;
 
             &:hover {
-                background-color: rgba(255, 255, 255, 0.25);
+                background-color: rgba(255, 255, 255, 0.1);
             }
         }
     }
 }
 
 #taskContainer {
+    grid-row: 2 / 4;
     width: 100%;
-    background-color: pink;
+    background-color: $light1;
 
     taskheader {
+        background-color: $light2;
+        font-family: 'Caveat brush';
+        font-size: 1.4rem;
+        height: 4rem;
+        align-items: end;
         display: grid;
-        grid-template-columns: 60px 60px repeat(5, 1fr);  
-
-        div {
-            border: 2px solid white;
-        }
+        grid-template-columns: 40px 40px 1fr 2fr 0.5fr 0.5fr 1fr;
+        gap: 10px;
     }
 
     task {
-        @extend taskheader;
+        display: grid;
+        grid-template-columns: 40px 40px 1fr 2fr 0.5fr 0.5fr 1fr;
+        gap: 10px;
+        align-items: center;
+        background-color: white;
+        border-radius: 10px;
+        font-family: $main-font;
+        color: $dark1;
+        margin: 1rem 0.5rem;
+        min-height: 2rem;
+        padding: 0.5rem;
+        box-shadow: 0 5px 10px rgb(53, 53, 53);
     }
 
     priority {
@@ -114,22 +133,16 @@ body {
     }
 
     .checkbox {
-        
+    
     }
 
-    ptitle {
-       
-    }
-
-    description {
-        
+    ptitle, description, project {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     duedate {
-        
-    }
-
-    project {
         
     }
 
@@ -139,8 +152,9 @@ body {
 }
 
 .footer {
-    background-color: black;
-    color: white;
+    background-color: $dark1;
+    color: $light2;
+    text-align: center;
 }
 
 #formBg {
@@ -226,10 +240,11 @@ body {
 }
 
 .filter-brown {
-    filter: invert(68%) sepia(2%) saturate(3058%) hue-rotate(314deg) brightness(87%) contrast(68%);
+    filter: invert(82%) sepia(8%) saturate(416%) hue-rotate(343deg) brightness(114%) contrast(90%);
 }
 
 .resize {
-    width: 1rem;
-    height: 1rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    filter: invert(78%) sepia(2%) saturate(6963%) hue-rotate(315deg) brightness(101%) contrast(111%);
 }

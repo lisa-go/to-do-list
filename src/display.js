@@ -3,44 +3,44 @@ import { myProjects, myTasks } from "./index.js";
     const taskCont = document.querySelector('#taskContainer');
 export function newdisplayTask() {
     //* container for task *//
-    const taskDisplay = document.createElement('task');
-    taskDisplay.classList.add('task' + myTasks.length);
+    const taskDisplay = document.createElement('task' + myTasks.length);
+    taskDisplay.classList.add('task');
     taskDisplay.dataset.id = myTasks.slice(-1)[0][4];
     taskCont.appendChild(taskDisplay);
 
         const taskD5 = document.createElement('priority');
-        taskD5.classList.add('task' + myTasks.length);
+        taskD5.classList.add('task');
         taskD5.textContent = myTasks.slice(-1)[0][3];
         taskDisplay.appendChild(taskD5);
 
         const taskD1 = document.createElement('input');
         taskD1.type = 'checkbox';
-        taskD1.classList.add('task' + myTasks.length);
+        taskD1.classList.add('task');
         taskD1.classList.add('checkbox');
         taskDisplay.appendChild(taskD1);
 
         const taskD2 = document.createElement('ptitle');
-        taskD2.classList.add('task' + myTasks.length);
+        taskD2.classList.add('task');
         taskD2.textContent = myTasks.slice(-1)[0][0];
         taskDisplay.appendChild(taskD2);
 
         const taskD3 = document.createElement('description');
-        taskD3.classList.add('task' + myTasks.length);
+        taskD3.classList.add('task');
         taskD3.textContent = myTasks.slice(-1)[0][1];
         taskDisplay.appendChild(taskD3);
 
         const taskD4 = document.createElement('dueDate');
-        taskD4.classList.add('task' + myTasks.length);
+        taskD4.classList.add('task');
         taskD4.textContent = myTasks.slice(-1)[0][2];
         taskDisplay.appendChild(taskD4);
 
         const taskD6 = document.createElement('project');
-        taskD6.classList.add('task' + myTasks.length);
+        taskD6.classList.add('task');
         taskD6.textContent = myTasks.slice(-1)[0][4];
         taskDisplay.appendChild(taskD6);
 
         const taskD7 = document.createElement('settings');
-        taskD7.classList.add('task' + myTasks.length);
+        taskD7.classList.add('task');
         taskD7.textContent = 'temp settings';
         taskDisplay.appendChild(taskD7);
 }
