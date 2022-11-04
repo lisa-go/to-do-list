@@ -62,7 +62,7 @@ function newTask() {
     task.addToList();
 
     closeForm();
-    newdisplayTask();
+    newdisplayTask('new');
     console.log(myTasks);
 }
 

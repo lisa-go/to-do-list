@@ -109,13 +109,13 @@ body {
         height: 4rem;
         align-items: end;
         display: grid;
-        grid-template-columns: 40px 40px 1fr 2fr 0.5fr 0.5fr 1fr;
+        grid-template-columns: 40px 1fr 2fr 0.5fr 0.5fr 1fr;
         gap: 10px;
     }
 
-    task {
+    .taskCon {
         display: grid;
-        grid-template-columns: 40px 40px 1fr 2fr 0.5fr 0.5fr 1fr;
+        grid-template-columns: 40px 1fr 2fr 0.5fr 0.5fr 1fr;
         gap: 10px;
         align-items: center;
         background-color: white;
@@ -126,10 +126,6 @@ body {
         min-height: 2rem;
         padding: 0.5rem;
         box-shadow: 0 5px 10px rgb(53, 53, 53);
-    }
-
-    priority {
-        
     }
 
     .checkbox {
