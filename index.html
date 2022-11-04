@@ -40,15 +40,15 @@
             <div class="projectL">Project: </div>
             <div class="project"></div>
 
-            <input type="text" id="title" name="title" placeholder="Title" required>
+            <input type="text" id="title" name="title" placeholder="Title">
             
-            <textarea id="description" name="description" rows="4" onfocus="this.value=''" required>Description</textarea>    
+            <textarea id="description" name="description" rows="4">Description</textarea>    
             
             <label for="dueDate" class="dueDate">Due date: </label>
-            <input type="date" id="dueDate" name="dueDate" required>
+            <input type="date" id="dueDate" name="dueDate">
             
             <label for="priority" class="priority">Priority: </label>
-            <select name="priority" id="priority" required>
+            <select name="priority" id="priority">
                 <option value="Urgent">Urgent</option>
                 <option value="High">High</option>
                 <option value="Normal" selected>Normal</option>
@@ -72,5 +72,32 @@
     </div>
 </div>
 
+<!---Edit Form Modal--->
+<div id="formBg3">
+    <div id="formContainer3">
+        <h3>Edit Task</h3>
+
+        <div class="projectL">Project: </div>
+        <div class="project2"></div>
+
+        <input type="text" id="etitle" name="etitle" placeholder="Title">
+        
+        <textarea id="edescription" name="edescription" rows="4">Description</textarea>    
+        
+        <label for="edueDate" class="edueDate">Due date: </label>
+        <input type="date" id="edueDate" name="edueDate">
+        
+        <label for="epriority" class="epriority">Priority: </label>
+        <select name="epriority" id="epriority">
+            <option value="Urgent">Urgent</option>
+            <option value="High">High</option>
+            <option value="Normal" selected>Normal</option>
+            <option value="Low">Low</option>
+        </select> 
+
+        <button id="eformBtn">Submit</button>
+        <button id="ecloseForm">Cancel</button>
+    </div>
+</div>
 </body>
 </html>
