@@ -65,7 +65,6 @@ function newTask() {
 
     closeForm();
     newdisplayTask('new');
-    console.log(myTasks);
 }
 
 
@@ -84,7 +83,7 @@ closeFormBtn.addEventListener("click", closeForm);
 const closeFormBtn2 = document.querySelector('#closeForm2');
 closeFormBtn2.addEventListener("click", closeForm);
 
-//* function to open form *//
+//* function to close form *//
 function closeForm() {
     document.querySelector('#formBg').style.display = "none";
     document.querySelector('#formBg2').style.display = "none";
@@ -98,11 +97,27 @@ projectList.id = 'project';
 projectList.required = 'true';
 projectListCont.appendChild(projectList);
 
+        //* project list on edit form too *//
+        const projectListCont2 = document.querySelector('.project2');
+        const projectList2 = document.createElement('select');
+        projectList2.name = 'project';
+        projectList2.id = 'project';
+        projectList2.required = 'true';
+        projectListCont2.appendChild(projectList2);
+
+
 const defaultProject = document.createElement('option');
 defaultProject.value = 'default';
 defaultProject.textContent = 'Default';
 defaultProject.selected = 'true';
 projectList.appendChild(defaultProject);
+  
+        const defaultProject2 = document.createElement('option');
+        defaultProject2.value = 'default';
+        defaultProject2.textContent = 'Default';
+        defaultProject2.selected = 'true';
+        projectList2.appendChild(defaultProject2);
+
 
 export let myProjects = [projectList.value];
 
@@ -129,9 +144,13 @@ export let myProjects = [projectList.value];
             projectStr.textContent = projectName;
             projectList.appendChild(projectStr);
 
+                    const projectStr2 = document.createElement('option');
+                    projectStr2.value = projectName;
+                    projectStr2.textContent = projectName;
+                    projectList2.appendChild(projectStr2);
+
             closeForm();
             displayProjects();
-            console.log (myProjects);
         }
 
         displayDprojects();

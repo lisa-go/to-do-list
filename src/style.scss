@@ -247,6 +247,33 @@ body {
         }
 }
 
+#formBg3 {
+    @extend #formBg;
+}
+
+#formContainer3 {
+    @extend #formContainer;
+
+    #etitle {
+        grid-column: 1 / 5;
+        font-size: 1.4rem;
+    }
+
+    #edescription {
+        grid-column: 1 / 5;
+    }
+
+    .edueDate, .epriority {
+        display: grid;
+        justify-items: end;
+        align-items: center;
+    }
+
+    #eformBtn {
+        grid-column: 2 / 3;
+    }
+}
+
 .filter-brown {
     filter: invert(82%) sepia(8%) saturate(416%) hue-rotate(343deg) brightness(114%) contrast(90%);
 }

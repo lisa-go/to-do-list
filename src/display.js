@@ -146,7 +146,7 @@ export function displayDprojects() {
         let pid = defaultP.id;
         displayTasks(pid);
     });
-    projectCont.appendChild(defaultP)
+    projectCont.appendChild(defaultP);
 }
 
 
