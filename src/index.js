@@ -6,15 +6,16 @@ import addIcon from './images/add.svg';
 export let myTasks = [];
 
 class Task {
-    constructor(title, description, dueDate, priority, project) {
+    constructor(title, description, dueDate, priority, project, show) {
     this.title = title;
     this.description = description;
     this.dueDate = dueDate;
     this.priority = priority;
     this.project = project;
+    this.show = show;
     }
         addToList(){ 
-            myTasks.push([this.title, this.description, this.dueDate, this.priority, this.project]);
+            myTasks.push([this.title, this.description, this.dueDate, this.priority, this.project, this.show]);
             return this;
         }
 }
@@ -56,8 +57,9 @@ function newTask() {
     let dueDate = document.querySelector("#dueDate").value;
     let priority = document.querySelector("#priority").value;
     let project = document.querySelector("#project").value;
+    let show = 'true';
 
-    var task = new Task(title, description, dueDate, priority, project);
+    var task = new Task(title, description, dueDate, priority, project, show);
 
     task.addToList();
 

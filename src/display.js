@@ -1,6 +1,10 @@
 import { myProjects, myTasks } from "./index.js";
+import setIcon from "./images/settings.svg";
+import delIcon from "./images/backspace.svg";
+import { delTask, editTask } from "./settings.js";
 
 var num;
+var tid;
 const taskCont = document.querySelector('#taskContainer');
 
 export function newdisplayTask(value) {
@@ -11,50 +15,72 @@ export function newdisplayTask(value) {
     else {
         num = value;
     }
-    
-    //* container for task *//
-    const taskDisplay = document.createElement('task' + myTasks.length);
-    taskDisplay.classList.add('task');
-    taskDisplay.classList.add('taskCon');
-    taskCont.appendChild(taskDisplay);
+    //* assigning index of task in array to the dom element *//
+    tid = myTasks.indexOf(num);
 
-        const taskD1 = document.createElement('input');
-        taskD1.type = 'checkbox';
-        taskD1.classList.add('checkbox');
-        taskDisplay.appendChild(taskD1);
+    if (num[5] === 'true') {
+        //* container for task *//
+        const taskDisplay = document.createElement('task' + tid);
+        taskDisplay.classList.add('task');
+        taskDisplay.classList.add('taskCon');
+        taskCont.appendChild(taskDisplay);
 
-        const taskD2 = document.createElement('ptitle');
-        taskD2.textContent = num[0];
-        taskDisplay.appendChild(taskD2);
+            const taskD1 = document.createElement('input');
+            taskD1.type = 'checkbox';
+            taskD1.classList.add('checkbox');
+            taskDisplay.appendChild(taskD1);
 
-        const taskD3 = document.createElement('description');
-        taskD3.textContent = num[1];
-        taskDisplay.appendChild(taskD3);
+            const taskD2 = document.createElement('ptitle');
+            taskD2.textContent = num[0];
+            taskDisplay.appendChild(taskD2);
 
-        const taskD4 = document.createElement('dueDate');
-        taskD4.textContent = num[2];
-        taskDisplay.appendChild(taskD4);
+            const taskD3 = document.createElement('description');
+            taskD3.textContent = num[1];
+            taskDisplay.appendChild(taskD3);
 
-        const taskD5 = document.createElement('project');
-        taskD5.textContent = num[4];
-        taskDisplay.appendChild(taskD5);
+            const taskD4 = document.createElement('dueDate');
+            taskD4.textContent = num[2];
+            taskDisplay.appendChild(taskD4);
 
-        const taskD6 = document.createElement('settings');
-        taskD6.textContent = 'temp settings';
-        taskDisplay.appendChild(taskD6);
+            const taskD5 = document.createElement('project');
+            taskD5.textContent = num[4];
+            taskDisplay.appendChild(taskD5);
 
-        //* color of border left changes based on priority *//
-        if (num[3] === 'Urgent') {
-            taskDisplay.style.borderLeft = '8px solid red';
+            const taskD6 = document.createElement('settings');
+            taskDisplay.appendChild(taskD6);
+                const editP = new Image();
+                editP.src = setIcon;
+                editP.id = tid;
+                editP.addEventListener('click', () => {
+                    editTask(editP.id);
+                });
+                taskD6.appendChild(editP);
+                const delP = new Image();
+                delP.src = delIcon;
+                delP.id = tid;
+                delP.addEventListener('click', () => {
+                    delTask(delP.id);
+                });
+                taskD6.appendChild(delP);
+
+
+            //* color of border left changes based on priority *//
+            if (num[3] === 'Urgent') {
+                taskDisplay.style.borderLeft = '8px solid red';
+            }
+            else if (num[3] === 'High') {
+                taskDisplay.style.borderLeft = '8px solid orange';
+            }
+            else if (num[3] === 'Normal') {
+                taskDisplay.style.borderLeft = '8px solid yellow';
+            }
+            else if (num[3] === 'Low') {
+                taskDisplay.style.borderLeft = '8px solid green';
+            }
         }
-        else if (num[3] === 'High') {
-            taskDisplay.style.borderLeft = '8px solid orange';
-        }
-        else if (num[3] === 'Normal') {
-            taskDisplay.style.borderLeft = '8px solid yellow';
-        }
-        else if (num[3] === 'Low') {
-            taskDisplay.style.borderLeft = '8px solid green';
+
+        else if (num[5] === 'false') {
+            return;
         }
 }
 
@@ -106,7 +132,7 @@ export function displayDprojects() {
     allProjects.id = 'projAll';
     allProjects.textContent = 'All';
     allProjects.addEventListener('click', () => {
-        clearDisplay();
+        clearDisplay('undefined');
         let pid = allProjects.id;
         displayTasks(pid);
     });
@@ -116,7 +142,7 @@ export function displayDprojects() {
     defaultP.id = 'default';
     defaultP.textContent = myProjects.slice(0);
     defaultP.addEventListener('click', () => {
-        clearDisplay();
+        clearDisplay('undefined');
         let pid = defaultP.id;
         displayTasks(pid);
     });
@@ -124,10 +150,18 @@ export function displayDprojects() {
 }
 
 
-function clearDisplay() {
-    //* removing current tasks on display *//
-    let elements = document.getElementsByClassName('task');
-    while(elements.length > 0){
-        elements[0].parentNode.removeChild(elements[0]);
+export function clearDisplay(value) {
+    if (value == 'undefined') {
+        let elements = document.getElementsByClassName('task');
+        while(elements.length > 0){
+            elements[0].parentNode.removeChild(elements[0]);
+        }
+    }
+
+    else {
+        let elements = document.getElementsByTagName('task' + value)
+        while(elements.length > 0){
+            elements[0].parentNode.removeChild(elements[0]);
+        }
     }
 }

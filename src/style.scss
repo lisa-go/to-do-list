@@ -109,13 +109,13 @@ body {
         height: 4rem;
         align-items: end;
         display: grid;
-        grid-template-columns: 40px 1fr 2fr 0.5fr 0.5fr 1fr;
+        grid-template-columns: 40px 1fr 2fr 0.5fr 0.5fr 0.5fr;
         gap: 10px;
     }
 
     .taskCon {
         display: grid;
-        grid-template-columns: 40px 1fr 2fr 0.5fr 0.5fr 1fr;
+        grid-template-columns: 40px 1fr 2fr 0.5fr 0.5fr 0.5fr;
         gap: 10px;
         align-items: center;
         background-color: white;
@@ -138,12 +138,24 @@ body {
         text-overflow: ellipsis;
     }
 
-    duedate {
-        
-    }
-
     settings {
-        
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 0.5rem;
+        padding-right: 2rem;
+        cursor: pointer;
+
+        img {
+            height: 2rem;
+            width: 2rem;
+            border-radius: 1rem;
+
+            &:hover {
+                background-color: rgb(228, 228, 228);
+                transition: 1s;
+            }
+        }
     }
 }
 
