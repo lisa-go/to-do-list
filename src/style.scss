@@ -76,6 +76,13 @@ body {
         color: $dark1;
         padding: 0.3rem 0;
         margin-top: 1.5rem;
+        display: flex;
+        justify-content: flex-end;
+
+        img {
+            width: 2rem;
+            height: 2rem;
+        }
     }
 
     .project-list {
@@ -85,6 +92,8 @@ body {
         gap: 5px;
 
         button {
+            display: flex;
+            justify-content: flex-end;
             text-align: right;
             width: 100%;
             background: none;
@@ -163,7 +172,13 @@ body {
 .footer {
     background-color: $dark1;
     color: $light2;
-    text-align: center;
+
+    a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+    }
 }
 
 #formBg {
@@ -298,4 +313,9 @@ body {
 
 .task {
     position: relative;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
 }

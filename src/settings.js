@@ -41,6 +41,8 @@ function ecloseForm() {
     document.querySelector('#formBg3').style.display = "none";
 }
 
+
+//* function for striking through a checked checkbox input task *//
 export function strikeTask(value) {
     let task = document.querySelector('task' + value);
     let taskDivs = task.childNodes;

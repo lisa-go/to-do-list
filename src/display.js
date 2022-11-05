@@ -2,6 +2,7 @@ import { myProjects, myTasks } from "./index.js";
 import setIcon from "./images/settings.svg";
 import delIcon from "./images/backspace.svg";
 import { delTask, editTask, strikeTask } from "./settings.js";
+import daIcon from "./images/double_arrow.svg";
 
 var num;
 var tid;
@@ -142,6 +143,12 @@ export function displayDprojects() {
     });
     projectCont.appendChild(allProjects);
 
+            const daicon = new Image();
+            daicon.src = daIcon;
+            daicon.classList.add('daicon');
+            daicon.classList.add('resize');
+            allProjects.appendChild(daicon);
+
     const defaultP = document.createElement('button');
     defaultP.id = 'default';
     defaultP.textContent = myProjects.slice(0);
@@ -162,6 +169,13 @@ export function clearDisplay(value) {
         }
     }
 
+    else if (value == 'daicon') {
+        let elements = document.getElementsByClassName('daicon');
+        while(elements.length > 0){
+            elements[0].parentNode.removeChild(elements[0]);
+        }
+    }
+
     else {
         let elements = document.getElementsByTagName('task' + value)
         while(elements.length > 0){
@@ -169,3 +183,14 @@ export function clearDisplay(value) {
         }
     }
 }
+
+projectCont.addEventListener('click', function(event) {
+    let bID = document.querySelector('#' + event.target.id);
+    clearDisplay('daicon');
+    const daicon = new Image();
+    daicon.src = daIcon;
+    daicon.classList.add('daicon');
+    daicon.classList.add('resize');
+    bID.appendChild(daicon); 
+});
+

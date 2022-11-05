@@ -2,6 +2,8 @@ import "./style.scss";
 import { displayProjects, displayDprojects, newdisplayTask } from './display.js';
 import logoIcon from './images/edit.svg';
 import addIcon from './images/add.svg';
+import gitIcon from './images/github.svg';
+import expandIcon from './images/expand.svg';
 
 export let myTasks = [];
 
@@ -153,4 +155,25 @@ export let myProjects = [projectList.value];
             displayProjects();
         }
 
-        displayDprojects();
+displayDprojects();
+
+//* footer *//
+const footCont = document.querySelector('.footer');
+const cre = document.createElement('a');
+cre.href = 'https://github.com/lisa-go';
+footCont.appendChild(cre);
+
+const giticon = new Image();
+giticon.src = gitIcon;
+giticon.classList.add('resize');
+cre.appendChild(giticon);
+
+const cred = document.createElement('p');
+cred.textContent = 'made by Lisa';
+cre.appendChild(cred);
+
+//* add projheader pic *//
+const projheader = document.querySelector('.projheader');
+const projicon = new Image();
+projicon.src = expandIcon;
+projheader.appendChild(projicon);
