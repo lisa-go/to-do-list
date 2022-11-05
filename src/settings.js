@@ -1,6 +1,5 @@
 import { clearDisplay, newdisplayTask } from "./display.js";
-import { myProjects, myTasks } from "./index.js";
-import { openForm, closeForm } from "./index.js";
+import { myTasks } from "./index.js";
 
 export function delTask(value) {
     myTasks[value][5] = 'false';
@@ -16,7 +15,7 @@ export function editTask(value) {
     document.querySelector("#edescription").value = task[1];
     document.querySelector("#edueDate").value = task[2];
     document.querySelector("#epriority").value = task[3];
-    document.querySelector("#project").value = task[4];
+    document.querySelector("#eproject").value = task[4];
     
     document.querySelector('#ecloseForm').addEventListener('click', () => {
         ecloseForm();
@@ -28,11 +27,9 @@ export function editTask(value) {
         task[2] = document.querySelector("#edueDate").value;
         task[3] = document.querySelector("#epriority").value;
         task[4] = document.querySelector("#eproject").value;
-            //* fix this project doesnt change *//
         ecloseForm();
         clearDisplay(value);
         newdisplayTask(task);
-        console.log (task);
     })
 }
 
@@ -42,4 +39,31 @@ function openeForm() {
 
 function ecloseForm() {
     document.querySelector('#formBg3').style.display = "none";
+}
+
+export function strikeTask(value) {
+    let task = document.querySelector('task' + value);
+    let taskDivs = task.childNodes;
+    let checkbox = document.querySelector('.cb' + value);
+    let str = document.createElement('str' + value);
+    str.classList.add('hidden');
+
+    if (checkbox.checked) {
+        task.appendChild(str);
+            for (let i = 0; i < taskDivs.length; i++) {
+                taskDivs[i].style.fontStyle = 'italic';
+            }
+        task.style.backgroundColor = '#eeeeee';
+    }
+    else {
+        for (let i = 0; i < taskDivs.length; i++) {
+            taskDivs[i].style.fontStyle = 'normal';
+        }
+        task.style.backgroundColor = 'white';
+
+        let elements = document.getElementsByTagName('str' + value)
+        while(elements.length > 0){
+            elements[0].parentNode.removeChild(elements[0]);
+    }
+}
 }

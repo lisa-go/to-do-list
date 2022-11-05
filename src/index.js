@@ -1,5 +1,5 @@
 import "./style.scss";
-import { displayTasks, displayProjects, displayDprojects, newdisplayTask } from './display.js';
+import { displayProjects, displayDprojects, newdisplayTask } from './display.js';
 import logoIcon from './images/edit.svg';
 import addIcon from './images/add.svg';
 
@@ -101,7 +101,7 @@ projectListCont.appendChild(projectList);
         const projectListCont2 = document.querySelector('.project2');
         const projectList2 = document.createElement('select');
         projectList2.name = 'project';
-        projectList2.id = 'project';
+        projectList2.id = 'eproject';
         projectList2.required = 'true';
         projectListCont2.appendChild(projectList2);
 
@@ -154,4 +154,3 @@ export let myProjects = [projectList.value];
         }
 
         displayDprojects();
-

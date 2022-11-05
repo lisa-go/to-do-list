@@ -128,8 +128,9 @@ body {
         box-shadow: 0 5px 10px rgb(53, 53, 53);
     }
 
-    .checkbox {
-    
+    input {
+        width: 18px;
+        height: 18px;
     }
 
     ptitle, description, project {
@@ -282,4 +283,19 @@ body {
     width: 1.5rem;
     height: 1.5rem;
     filter: invert(78%) sepia(2%) saturate(6963%) hue-rotate(315deg) brightness(101%) contrast(111%);
+}
+
+.hidden {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    border-top: 1px solid grey;
+    background: grey;
+    width: 100%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.task {
+    position: relative;
 }

@@ -1,7 +1,7 @@
 import { myProjects, myTasks } from "./index.js";
 import setIcon from "./images/settings.svg";
 import delIcon from "./images/backspace.svg";
-import { delTask, editTask } from "./settings.js";
+import { delTask, editTask, strikeTask } from "./settings.js";
 
 var num;
 var tid;
@@ -27,7 +27,11 @@ export function newdisplayTask(value) {
 
             const taskD1 = document.createElement('input');
             taskD1.type = 'checkbox';
-            taskD1.classList.add('checkbox');
+            taskD1.id = tid;
+            taskD1.classList.add('cb' + tid);
+            taskD1.addEventListener('click', () => {
+                strikeTask(taskD1.id);
+            })
             taskDisplay.appendChild(taskD1);
 
             const taskD2 = document.createElement('ptitle');
@@ -119,7 +123,7 @@ export function displayProjects() {
     newProject.id = pid;
     newProject.textContent = pid;
     newProject.addEventListener('click', () => {
-        clearDisplay();
+        clearDisplay('undefined');
         displayTasks(pid);
     });
     projectCont.appendChild(newProject);
