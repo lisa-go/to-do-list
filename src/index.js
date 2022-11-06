@@ -1,11 +1,16 @@
 import "./style.scss";
-import { displayProjects, displayDprojects, newdisplayTask } from './display.js';
+import { displayProjects, displayDprojects, newdisplayTask, displayTasks, createPselect } from './display.js';
 import logoIcon from './images/edit.svg';
 import addIcon from './images/add.svg';
 import gitIcon from './images/github.svg';
 import expandIcon from './images/expand.svg';
 
+
+
 export let myTasks = [];
+
+
+
 
 class Task {
     constructor(title, description, dueDate, priority, project, show) {
@@ -67,6 +72,7 @@ function newTask() {
 
     closeForm();
     newdisplayTask('new');
+    localStorage["myTasks"] = JSON.stringify(myTasks);
 }
 
 
@@ -139,23 +145,12 @@ export let myProjects = [projectList.value];
             let pname = document.querySelector("#newProject").value;
             var project = new Project(pname);
             project.addToProjectlist();
-            
-            let projectName = myProjects.slice(-1);
-            const projectStr = document.createElement('option');
-            projectStr.value = projectName;
-            projectStr.textContent = projectName;
-            projectList.appendChild(projectStr);
 
-                    const projectStr2 = document.createElement('option');
-                    projectStr2.value = projectName;
-                    projectStr2.textContent = projectName;
-                    projectList2.appendChild(projectStr2);
-
+            createPselect('new');
             closeForm();
-            displayProjects();
+            displayProjects('new');
+            localStorage["myProjects"] = JSON.stringify(myProjects);
         }
-
-displayDprojects();
 
 //* footer *//
 const footCont = document.querySelector('.footer');
@@ -177,3 +172,25 @@ const projheader = document.querySelector('.projheader');
 const projicon = new Image();
 projicon.src = expandIcon;
 projheader.appendChild(projicon);
+
+
+//* get local storage *//
+if (localStorage["myTasks"] != undefined) {
+    var stored_tasks = JSON.parse(localStorage["myTasks"]);
+    myTasks = stored_tasks;
+}
+if (localStorage["myProjects"] != undefined){
+    var stored_projects = JSON.parse(localStorage["myProjects"]);
+    myProjects = stored_projects;
+}
+
+
+displayDprojects();
+displayTasks('projAll');
+//* existing projects on form select *//
+for (let i = 1; i < myProjects.length; i++) {
+    createPselect(i);
+}
+
+
+    

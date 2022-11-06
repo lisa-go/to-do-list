@@ -90,8 +90,6 @@ export function newdisplayTask(value) {
 }
 
 
-
-
 export function displayTasks(pid) {
     let pin = pid.toString();
     let projTask = [];
@@ -119,14 +117,15 @@ export function displayTasks(pid) {
 //* create new divs for new projects *//
     const projectCont = document.querySelector('.project-list');
 export function displayProjects() {
-    const newProject = document.createElement('button');
     let pid = myProjects.slice(-1);
+    const newProject = document.createElement('button');
     newProject.id = pid;
     newProject.textContent = pid;
     newProject.addEventListener('click', () => {
         clearDisplay('undefined');
         displayTasks(pid);
     });
+    
     projectCont.appendChild(newProject);
 }
 
@@ -151,13 +150,46 @@ export function displayDprojects() {
 
     const defaultP = document.createElement('button');
     defaultP.id = 'default';
-    defaultP.textContent = myProjects.slice(0);
+    defaultP.textContent = 'default';
     defaultP.addEventListener('click', () => {
         clearDisplay('undefined');
         let pid = defaultP.id;
         displayTasks(pid);
     });
     projectCont.appendChild(defaultP);
+
+    //* showing projects from local storage by default *//
+    if (myProjects.length > 1) {
+        for (let i = 1; i < myProjects.length; i++) {
+            let pid = myProjects[i];
+            displayProjects(pid);
+        }
+    }
+}
+
+
+export function createPselect(value){
+    var projectName;
+    const projectList = document.querySelector('#project');
+    const projectList2 = document.querySelector('#eproject');
+
+    if (value === 'new') {
+        projectName = myProjects.slice(-1);
+    }
+
+    else {
+        projectName = myProjects[value];
+    }
+
+    const projectStr = document.createElement('option');
+    projectStr.value = projectName;
+    projectStr.textContent = projectName;
+    projectList.appendChild(projectStr);
+
+            const projectStr2 = document.createElement('option');
+            projectStr2.value = projectName;
+            projectStr2.textContent = projectName;
+            projectList2.appendChild(projectStr2);
 }
 
 
