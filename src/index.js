@@ -1,16 +1,11 @@
 import "./style.scss";
-import { displayProjects, displayDprojects, newdisplayTask, displayTasks, createPselect } from './display.js';
+import { displayProjects, displayDprojects, newdisplayTask, displayTasks, createPselect, clearDisplay } from './display.js';
 import logoIcon from './images/edit.svg';
 import addIcon from './images/add.svg';
 import gitIcon from './images/github.svg';
 import expandIcon from './images/expand.svg';
 
-
-
 export let myTasks = [];
-
-
-
 
 class Task {
     constructor(title, description, dueDate, priority, project, show) {
@@ -173,6 +168,24 @@ const projicon = new Image();
 projicon.src = expandIcon;
 projheader.appendChild(projicon);
 
+    //* add createheader pic *//
+    const createheader = document.querySelector('.createHeader');
+    const createicon = new Image();
+    createicon.src = expandIcon;
+    createheader.appendChild(createicon);
+
+//* button to clear storage *//
+const clearCont = document.querySelector('.clearStorage');
+const clearBtn = document.createElement('button');
+clearBtn.textContent = 'Clear All';
+clearBtn.addEventListener('click', () => {
+    localStorage.clear();
+    myTasks = [];
+    myProjects = ['default']; 
+    location.reload();
+})
+clearCont.appendChild(clearBtn);
+
 
 //* get local storage *//
 if (localStorage["myTasks"] != undefined) {
@@ -191,6 +204,3 @@ displayTasks('projAll');
 for (let i = 1; i < myProjects.length; i++) {
     createPselect(i);
 }
-
-
-    

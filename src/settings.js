@@ -1,9 +1,11 @@
 import { clearDisplay, newdisplayTask } from "./display.js";
 import { myTasks } from "./index.js";
+import closeIcon from "./images/cancel.svg";
 
 export function delTask(value) {
     myTasks[value][5] = 'false';
     clearDisplay(value);
+    localStorage["myTasks"] = JSON.stringify(myTasks);
 }
 
 export function editTask(value) {
@@ -30,6 +32,7 @@ export function editTask(value) {
         ecloseForm();
         clearDisplay(value);
         newdisplayTask(task);
+        localStorage["myTasks"] = JSON.stringify(myTasks);
     })
 }
 
@@ -39,6 +42,7 @@ function openeForm() {
 
 function ecloseForm() {
     document.querySelector('#formBg3').style.display = "none";
+    document.querySelector('#formBg4').style.display = "none";
 }
 
 
@@ -69,3 +73,54 @@ export function strikeTask(value) {
     }
 }
 }
+
+function openView() {
+    document.querySelector('#formBg4').style.display = "flex";
+}
+
+export function viewFull(value) {
+    openView();
+    let task = myTasks[value];
+
+    //* priority bar *//
+    const viewPrio = document.querySelector('.viewPriority');
+        if (task[3] === 'Urgent') {
+            viewPrio.style.backgroundColor = 'red';
+        }
+        else if (task[3] === 'High') {
+            viewPrio.style.backgroundColor = 'orange';
+        }
+        else if (task[3] === 'Normal') {
+            viewPrio.style.backgroundColor = 'yellow';
+        }
+        else if (task[3] === 'Low') {
+            viewPrio.style.backgroundColor = 'green';
+        }
+
+    //* task name *//
+    const viewTitle = document.querySelector('.viewTitle');
+    viewTitle.textContent = task[0];
+
+    //* project name *//
+    const viewProject = document.querySelector('.viewProject');
+    viewProject.textContent = '— ' + task[4];
+
+    //* task description *//
+    const viewDescription = document.querySelector('.viewDescription');
+    viewDescription.textContent = task[1];
+
+    //* due date *//
+    const viewDuedate = document.querySelector('.viewDuedate');
+    viewDuedate.textContent = task[2];
+
+    console.log (task);
+
+
+}
+
+const closeBtn = new Image();
+closeBtn.src = closeIcon;
+closeBtn.addEventListener('click', () => {
+    ecloseForm();
+});
+document.querySelector(".viewClose").appendChild(closeBtn);

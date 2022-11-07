@@ -1,8 +1,9 @@
 import { myProjects, myTasks } from "./index.js";
 import setIcon from "./images/settings.svg";
 import delIcon from "./images/backspace.svg";
-import { delTask, editTask, strikeTask } from "./settings.js";
+import { delTask, editTask, viewFull, strikeTask } from "./settings.js";
 import daIcon from "./images/double_arrow.svg";
+import fullIcon from "./images/fullscreen.svg";
 
 var num;
 var tid;
@@ -67,6 +68,13 @@ export function newdisplayTask(value) {
                     delTask(delP.id);
                 });
                 taskD6.appendChild(delP);
+                const fullP = new Image();
+                fullP.src = fullIcon;
+                fullP.id = tid;
+                fullP.addEventListener('click', () => {
+                    viewFull(fullP.id);
+                })
+                taskD6.appendChild(fullP);
 
 
             //* color of border left changes based on priority *//
