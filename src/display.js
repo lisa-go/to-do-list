@@ -27,76 +27,75 @@ export function newdisplayTask(value) {
         taskDisplay.classList.add('taskCon');
         taskCont.appendChild(taskDisplay);
 
-            const taskD1 = document.createElement('input');
-            taskD1.type = 'checkbox';
-            taskD1.id = tid;
-            taskD1.classList.add('cb' + tid);
-            taskD1.addEventListener('click', () => {
-                strikeTask(taskD1.id);
-            })
-            taskDisplay.appendChild(taskD1);
+        const taskD1 = document.createElement('input');
+        taskD1.type = 'checkbox';
+        taskD1.id = tid;
+        taskD1.classList.add('cb' + tid);
+        taskD1.addEventListener('click', () => {
+            strikeTask(taskD1.id);
+        })
+        taskDisplay.appendChild(taskD1);
 
-            const taskD2 = document.createElement('ptitle');
-            taskD2.textContent = num[0];
-            taskDisplay.appendChild(taskD2);
+        const taskD2 = document.createElement('ptitle');
+        taskD2.textContent = num[0];
+        taskDisplay.appendChild(taskD2);
 
-            const taskD3 = document.createElement('description');
-            taskD3.textContent = num[1];
-            taskDisplay.appendChild(taskD3);
+        const taskD3 = document.createElement('description');
+        taskD3.textContent = num[1];
+        taskDisplay.appendChild(taskD3);
 
-            const taskD4 = document.createElement('dueDate');
-            taskD4.textContent = num[2];
-            taskDisplay.appendChild(taskD4);
+        const taskD4 = document.createElement('dueDate');
+        taskD4.textContent = num[2];
+        taskDisplay.appendChild(taskD4);
 
-            const taskD5 = document.createElement('project');
-            taskD5.textContent = num[4];
-            taskDisplay.appendChild(taskD5);
+        const taskD5 = document.createElement('project');
+        taskD5.textContent = num[4];
+        taskDisplay.appendChild(taskD5);
 
-            const taskD6 = document.createElement('settings');
-            taskDisplay.appendChild(taskD6);
-                const editP = new Image();
-                editP.src = setIcon;
-                editP.id = tid;
-                editP.addEventListener('click', () => {
-                    editTask(editP.id);
-                });
-                taskD6.appendChild(editP);
-                const delP = new Image();
-                delP.src = delIcon;
-                delP.id = tid;
-                delP.addEventListener('click', () => {
-                    delTask(delP.id);
-                });
-                taskD6.appendChild(delP);
-                const fullP = new Image();
-                fullP.src = fullIcon;
-                fullP.id = tid;
-                fullP.addEventListener('click', () => {
-                    viewFull(fullP.id);
-                })
-                taskD6.appendChild(fullP);
+        const taskD6 = document.createElement('settings');
+        taskDisplay.appendChild(taskD6);
+        const editP = new Image();
+        editP.src = setIcon;
+        editP.id = tid;
+        editP.addEventListener('click', () => {
+            editTask(editP.id);
+        });
+        taskD6.appendChild(editP);
+        const delP = new Image();
+        delP.src = delIcon;
+        delP.id = tid;
+        delP.addEventListener('click', () => {
+            delTask(delP.id);
+        });
+        taskD6.appendChild(delP);
+        const fullP = new Image();
+        fullP.src = fullIcon;
+        fullP.id = tid;
+        fullP.addEventListener('click', () => {
+            viewFull(fullP.id);
+        })
+        taskD6.appendChild(fullP);
 
 
-            //* color of border left changes based on priority *//
-            if (num[3] === 'Urgent') {
-                taskDisplay.style.borderLeft = '8px solid red';
-            }
-            else if (num[3] === 'High') {
-                taskDisplay.style.borderLeft = '8px solid orange';
-            }
-            else if (num[3] === 'Normal') {
-                taskDisplay.style.borderLeft = '8px solid yellow';
-            }
-            else if (num[3] === 'Low') {
-                taskDisplay.style.borderLeft = '8px solid green';
-            }
+        //* color of border left changes based on priority *//
+        if (num[3] === 'Urgent') {
+            taskDisplay.style.borderLeft = '8px solid red';
         }
-
-        else if (num[5] === 'false') {
-            return;
+        else if (num[3] === 'High') {
+            taskDisplay.style.borderLeft = '8px solid orange';
         }
+        else if (num[3] === 'Normal') {
+            taskDisplay.style.borderLeft = '8px solid yellow';
+        }
+        else if (num[3] === 'Low') {
+            taskDisplay.style.borderLeft = '8px solid green';
+        }
+    }
+
+    else if (num[5] === 'false') {
+        return;
+    }
 }
-
 
 export function displayTasks(pid) {
     let pin = pid.toString();
@@ -117,13 +116,12 @@ export function displayTasks(pid) {
             projTask.push(myTasks[i]);
             num = myTasks[i];
             newdisplayTask(num);
-        }  
+        }
     }
 }
 
-
 //* create new divs for new projects *//
-    const projectCont = document.querySelector('.project-list');
+const projectCont = document.querySelector('.project-list');
 export function displayProjects() {
     let pid = myProjects.slice(-1);
     const newProject = document.createElement('button');
@@ -133,10 +131,9 @@ export function displayProjects() {
         clearDisplay('undefined');
         displayTasks(pid);
     });
-    
+
     projectCont.appendChild(newProject);
 }
-
 
 //* default project displays *//
 export function displayDprojects() {
@@ -150,11 +147,11 @@ export function displayDprojects() {
     });
     projectCont.appendChild(allProjects);
 
-            const daicon = new Image();
-            daicon.src = daIcon;
-            daicon.classList.add('daicon');
-            daicon.classList.add('resize');
-            allProjects.appendChild(daicon);
+    const daicon = new Image();
+    daicon.src = daIcon;
+    daicon.classList.add('daicon');
+    daicon.classList.add('resize');
+    allProjects.appendChild(daicon);
 
     const defaultP = document.createElement('button');
     defaultP.id = 'default';
@@ -175,8 +172,7 @@ export function displayDprojects() {
     }
 }
 
-
-export function createPselect(value){
+export function createPselect(value) {
     var projectName;
     const projectList = document.querySelector('#project');
     const projectList2 = document.querySelector('#eproject');
@@ -194,43 +190,41 @@ export function createPselect(value){
     projectStr.textContent = projectName;
     projectList.appendChild(projectStr);
 
-            const projectStr2 = document.createElement('option');
-            projectStr2.value = projectName;
-            projectStr2.textContent = projectName;
-            projectList2.appendChild(projectStr2);
+    const projectStr2 = document.createElement('option');
+    projectStr2.value = projectName;
+    projectStr2.textContent = projectName;
+    projectList2.appendChild(projectStr2);
 }
-
 
 export function clearDisplay(value) {
     if (value == 'undefined') {
         let elements = document.getElementsByClassName('task');
-        while(elements.length > 0){
+        while (elements.length > 0) {
             elements[0].parentNode.removeChild(elements[0]);
         }
     }
 
     else if (value == 'daicon') {
         let elements = document.getElementsByClassName('daicon');
-        while(elements.length > 0){
+        while (elements.length > 0) {
             elements[0].parentNode.removeChild(elements[0]);
         }
     }
 
     else {
         let elements = document.getElementsByTagName('task' + value)
-        while(elements.length > 0){
+        while (elements.length > 0) {
             elements[0].parentNode.removeChild(elements[0]);
         }
     }
 }
 
-projectCont.addEventListener('click', function(event) {
+projectCont.addEventListener('click', function (event) {
     let bID = document.querySelector('#' + event.target.id);
     clearDisplay('daicon');
     const daicon = new Image();
     daicon.src = daIcon;
     daicon.classList.add('daicon');
     daicon.classList.add('resize');
-    bID.appendChild(daicon); 
+    bID.appendChild(daicon);
 });
-

@@ -9,27 +9,27 @@ export let myTasks = [];
 
 class Task {
     constructor(title, description, dueDate, priority, project, show) {
-    this.title = title;
-    this.description = description;
-    this.dueDate = dueDate;
-    this.priority = priority;
-    this.project = project;
-    this.show = show;
+        this.title = title;
+        this.description = description;
+        this.dueDate = dueDate;
+        this.priority = priority;
+        this.project = project;
+        this.show = show;
     }
-        addToList(){ 
-            myTasks.push([this.title, this.description, this.dueDate, this.priority, this.project, this.show]);
-            return this;
-        }
+    addToList() {
+        myTasks.push([this.title, this.description, this.dueDate, this.priority, this.project, this.show]);
+        return this;
+    }
 }
 
 class Project {
     constructor(pname) {
         this.pname = pname;
     }
-        addToProjectlist() {
-            myProjects.push(this.pname);
-            return this;
-        }
+    addToProjectlist() {
+        myProjects.push(this.pname);
+        return this;
+    }
 }
 
 //* adding images *//
@@ -46,7 +46,6 @@ const add2 = new Image();
 add2.src = addIcon;
 add2.classList.add('resize');
 document.querySelector('#addProject').appendChild(add2);
-
 
 //* event listener for submit button on form *//
 const formBtn = document.querySelector('#formBtn');
@@ -69,7 +68,6 @@ function newTask() {
     newdisplayTask('new');
     localStorage["myTasks"] = JSON.stringify(myTasks);
 }
-
 
 //* event listener for add task button on sidebar *//
 const openFormBtn = document.querySelector('#openForm');
@@ -100,13 +98,13 @@ projectList.id = 'project';
 projectList.required = 'true';
 projectListCont.appendChild(projectList);
 
-        //* project list on edit form too *//
-        const projectListCont2 = document.querySelector('.project2');
-        const projectList2 = document.createElement('select');
-        projectList2.name = 'project';
-        projectList2.id = 'eproject';
-        projectList2.required = 'true';
-        projectListCont2.appendChild(projectList2);
+//* project list on edit form too *//
+const projectListCont2 = document.querySelector('.project2');
+const projectList2 = document.createElement('select');
+projectList2.name = 'project';
+projectList2.id = 'eproject';
+projectList2.required = 'true';
+projectListCont2.appendChild(projectList2);
 
 
 const defaultProject = document.createElement('option');
@@ -114,38 +112,37 @@ defaultProject.value = 'default';
 defaultProject.textContent = 'Default';
 defaultProject.selected = 'true';
 projectList.appendChild(defaultProject);
-  
-        const defaultProject2 = document.createElement('option');
-        defaultProject2.value = 'default';
-        defaultProject2.textContent = 'Default';
-        defaultProject2.selected = 'true';
-        projectList2.appendChild(defaultProject2);
 
+const defaultProject2 = document.createElement('option');
+defaultProject2.value = 'default';
+defaultProject2.textContent = 'Default';
+defaultProject2.selected = 'true';
+projectList2.appendChild(defaultProject2);
 
 export let myProjects = [projectList.value];
 
-        //* event listener for opening add project form *//
-        const addProjectBtn = document.querySelector('#addProject');
-        addProjectBtn.addEventListener("click", openForm2);
+//* event listener for opening add project form *//
+const addProjectBtn = document.querySelector('#addProject');
+addProjectBtn.addEventListener("click", openForm2);
 
-        function openForm2() {
-            document.querySelector('#formBg2').style.display = "flex";
-        }
+function openForm2() {
+    document.querySelector('#formBg2').style.display = "flex";
+}
 
-        //* add new projects *//
-        const formBtn2 = document.querySelector('#formBtn2');
-        formBtn2.addEventListener("click", newProject);
+//* add new projects *//
+const formBtn2 = document.querySelector('#formBtn2');
+formBtn2.addEventListener("click", newProject);
 
-        function newProject() {
-            let pname = document.querySelector("#newProject").value;
-            var project = new Project(pname);
-            project.addToProjectlist();
+function newProject() {
+    let pname = document.querySelector("#newProject").value;
+    var project = new Project(pname);
+    project.addToProjectlist();
 
-            createPselect('new');
-            closeForm();
-            displayProjects('new');
-            localStorage["myProjects"] = JSON.stringify(myProjects);
-        }
+    createPselect('new');
+    closeForm();
+    displayProjects('new');
+    localStorage["myProjects"] = JSON.stringify(myProjects);
+}
 
 //* footer *//
 const footCont = document.querySelector('.footer');
@@ -168,11 +165,11 @@ const projicon = new Image();
 projicon.src = expandIcon;
 projheader.appendChild(projicon);
 
-    //* add createheader pic *//
-    const createheader = document.querySelector('.createHeader');
-    const createicon = new Image();
-    createicon.src = expandIcon;
-    createheader.appendChild(createicon);
+//* add createheader pic *//
+const createheader = document.querySelector('.createHeader');
+const createicon = new Image();
+createicon.src = expandIcon;
+createheader.appendChild(createicon);
 
 //* button to clear storage *//
 const clearCont = document.querySelector('.clearStorage');
@@ -181,22 +178,20 @@ clearBtn.textContent = 'Clear All';
 clearBtn.addEventListener('click', () => {
     localStorage.clear();
     myTasks = [];
-    myProjects = ['default']; 
+    myProjects = ['default'];
     location.reload();
 })
 clearCont.appendChild(clearBtn);
-
 
 //* get local storage *//
 if (localStorage["myTasks"] != undefined) {
     var stored_tasks = JSON.parse(localStorage["myTasks"]);
     myTasks = stored_tasks;
 }
-if (localStorage["myProjects"] != undefined){
+if (localStorage["myProjects"] != undefined) {
     var stored_projects = JSON.parse(localStorage["myProjects"]);
     myProjects = stored_projects;
 }
-
 
 displayDprojects();
 displayTasks('projAll');

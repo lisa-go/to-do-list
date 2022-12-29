@@ -18,7 +18,7 @@ export function editTask(value) {
     document.querySelector("#edueDate").value = task[2];
     document.querySelector("#epriority").value = task[3];
     document.querySelector("#eproject").value = task[4];
-    
+
     document.querySelector('#ecloseForm').addEventListener('click', () => {
         ecloseForm();
     })
@@ -45,7 +45,6 @@ function ecloseForm() {
     document.querySelector('#formBg4').style.display = "none";
 }
 
-
 //* function for striking through a checked checkbox input task *//
 export function strikeTask(value) {
     let task = document.querySelector('task' + value);
@@ -56,9 +55,9 @@ export function strikeTask(value) {
 
     if (checkbox.checked) {
         task.appendChild(str);
-            for (let i = 0; i < taskDivs.length; i++) {
-                taskDivs[i].style.fontStyle = 'italic';
-            }
+        for (let i = 0; i < taskDivs.length; i++) {
+            taskDivs[i].style.fontStyle = 'italic';
+        }
         task.style.backgroundColor = '#eeeeee';
     }
     else {
@@ -68,10 +67,10 @@ export function strikeTask(value) {
         task.style.backgroundColor = 'white';
 
         let elements = document.getElementsByTagName('str' + value)
-        while(elements.length > 0){
+        while (elements.length > 0) {
             elements[0].parentNode.removeChild(elements[0]);
+        }
     }
-}
 }
 
 function openView() {
@@ -84,18 +83,18 @@ export function viewFull(value) {
 
     //* priority bar *//
     const viewPrio = document.querySelector('.viewPriority');
-        if (task[3] === 'Urgent') {
-            viewPrio.style.backgroundColor = 'red';
-        }
-        else if (task[3] === 'High') {
-            viewPrio.style.backgroundColor = 'orange';
-        }
-        else if (task[3] === 'Normal') {
-            viewPrio.style.backgroundColor = 'yellow';
-        }
-        else if (task[3] === 'Low') {
-            viewPrio.style.backgroundColor = 'green';
-        }
+    if (task[3] === 'Urgent') {
+        viewPrio.style.backgroundColor = 'red';
+    }
+    else if (task[3] === 'High') {
+        viewPrio.style.backgroundColor = 'orange';
+    }
+    else if (task[3] === 'Normal') {
+        viewPrio.style.backgroundColor = 'yellow';
+    }
+    else if (task[3] === 'Low') {
+        viewPrio.style.backgroundColor = 'green';
+    }
 
     //* task name *//
     const viewTitle = document.querySelector('.viewTitle');
@@ -112,10 +111,6 @@ export function viewFull(value) {
     //* due date *//
     const viewDuedate = document.querySelector('.viewDuedate');
     viewDuedate.textContent = task[2];
-
-    console.log (task);
-
-
 }
 
 const closeBtn = new Image();
